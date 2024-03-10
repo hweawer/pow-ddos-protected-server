@@ -1,0 +1,16 @@
+FROM golang:1.21 as build
+
+WORKDIR /app
+COPY . ./
+
+RUN go mod download
+RUN go build -o app.so ./cmd/client/main.go
+
+FROM debian
+ARG address_arg="pow_server:8080"
+ENV address_env=$address_arg
+
+WORKDIR /
+COPY --from=build /app/app.so .
+
+ENTRYPOINT ./app.so $address_env

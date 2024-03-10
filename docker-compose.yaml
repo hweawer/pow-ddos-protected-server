@@ -1,0 +1,7 @@
+services:
+  server:
+    image: pow_server
+  client:
+    image: pow_client
+    links:
+      - "server:pow_server"
