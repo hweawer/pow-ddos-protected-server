@@ -21,7 +21,7 @@ For building docker images:
 
 1. It can be used just as go binaries.
    Server: `go run ./cmd/server/main.go`
-   Client: `go run ./cmd/client/main.go`
+   Client: `go run ./cmd/client/main.go localhost:8080`
 2. Can be used as docker containers. After you have docker images:
    `docker-compose up` - will start both server and client, you can find the quote in client logs.
    `docker compose run client` - will restart the client
